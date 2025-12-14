@@ -115,7 +115,7 @@ The original German tutorial can be found in the parent directory structure:
 ## Credits
 
 Original German tutorial by the Lazarus Free Vision community.
-English translation completed December 2024.
+English translation completed December 2025.
 
 ## Usage
 
