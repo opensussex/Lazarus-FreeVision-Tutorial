@@ -1,18 +1,18 @@
 //image image.png
 
 (*
-Minimalste Free-Vision Anwendung
+Minimal Free-Vision application
 *)
 //lineal
 (*
-Programm-Name, wie es bei Pascal üblich ist.
+Program name, as is customary in Pascal.
 *)
 //code+
 program Project1;
 //code-
 
 (*
-Das überhaupt Free-Vision möglich ist, muss die Unit <b>App</b> eingebunden werden.
+For Free-Vision to be possible at all, the unit <b>App</b> must be included.
 *)
 //code+
 uses
@@ -20,7 +20,7 @@ uses
 //code-
 
 (*
-Deklaration für die Free-Vision Anwendung.
+Declaration for the Free-Vision application.
 *)
 //code+
 var
@@ -28,13 +28,13 @@ var
 //code-
 
 (*
-Für die Abarbeitung sind immer die drei Schritte notwendig.
+The following three steps are always necessary for execution.
 *)
   //code+
 begin
-  MyApp.Init;   // Inizialisieren
-  MyApp.Run;    // Abarbeiten
-  MyApp.Done;   // Freigeben
+  MyApp.Init;   // Initialize
+  MyApp.Run;    // Execute
+  MyApp.Done;   // Release
 end.
 //code-
 

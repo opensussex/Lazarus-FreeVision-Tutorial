@@ -1,7 +1,7 @@
 //image image.png
 (*
-Ein Hello World mit Free-Vision.
-Der Text wird in einer Message-Box ausgegeben.
+A Hello World with Free-Vision.
+The text is displayed in a message box.
 *)
 //lineal
 //code+
@@ -15,7 +15,7 @@ var
 begin
   MyApp.Init;
   MessageBox('Hello World !', nil, mfOKButton);
-  // MyApp.Run;   // Wen es weiter gehen soll.
+  // MyApp.Run;   // If it should continue.
   MyApp.Done;
 end.
 //code-
