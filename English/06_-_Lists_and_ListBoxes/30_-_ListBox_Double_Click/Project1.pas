@@ -1,30 +1,30 @@
 //image image.png
 (*
-Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBox vererben und einen neuen Handleevent einfügen.
+If you want to evaluate the double click on a ListBox, you must inherit the ListBox and insert a new HandleEvent.
 *)
 //lineal
 program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
-  StdDlg,   // Für Datei öffnen
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
+  StdDlg,   // For file open
   MyDialog;
 
 const
-  cmDialog   = 1001;     // Dialog anzeigen
+  cmDialog   = 1001;     // Show dialog
 
 type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
     procedure NewWindows(Titel: ShortString);
   end;
 
@@ -74,7 +74,7 @@ type
           MyDialog := New(PMyDialog, Init);
           if ValidView(MyDialog) <> nil then begin
             Desktop^.ExecView(MyDialog);   // Dialog ausführen.
-            Dispose(MyDialog, Done);       // Dialog und Speicher frei geben.
+            Dispose(MyDialog, Done);       // Release dialog and memory.
           end;
         end
         else begin
@@ -120,24 +120,24 @@ The dialog with the ListBox
 //includepascal mydialog.pas head
 
 (*
-Das Vererben der ListBox.
-Wen man schon vererbt, habe ich auch gleich den <b>Destructor</b> eingefügt, welcher am Schluss die Liste aufräumt.
+Inheriting the ListBox.
+If you are already inheriting, I have also inserted the destructor, which cleans up the list at the end.
 *)
 //includepascal mydialog.pas type
 
 (*
-Der neue <b>HandleEvent</b> der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.
+The new HandleEvent of the new ListBox, which catches the double click and interprets it as [Ok].
 *)
 //includepascal mydialog.pas event
 
 (*
-Manuell den Speicher der Liste frei geben.
+Manually release the memory of the list.
 *)
 //includepascal mydialog.pas done
 
 (*
-Der EventHandle des Dialogs.
-Hier wird einfach ein [Ok] bei dem Doppelklick abgearbeitet.
+The event handle of the dialog.
+Here an [Ok] is simply processed on double click.
 *)
 //includepascal mydialog.pas handleevent
 

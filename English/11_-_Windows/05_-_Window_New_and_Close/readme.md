@@ -1,9 +1,9 @@
 # 11 - Windows
-## 05 - Windows neu und schliessen
+## 05 - Window New and Close
 
 ![image.png](image.png)
 
-Über das Menu Windows erzeigen und schliessen.
+Über das Menu Fenster erzeigen und schliessen.
 
 ---
 Neue Konstanten für Kommados.
@@ -20,7 +20,7 @@ type
     procedure InitMenuBar; virtual;
 
     procedure HandleEvent(var Event: TEvent); virtual; // Abarbeitung Kommandos
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
 
     procedure NewWindows;
   end;
@@ -45,8 +45,8 @@ Das Menu wurde um **Neu** und **Schliessen** ergänzt.
   end;
 ```
 
-Beim Windows erzeugen, ist noch ein Counter hinzugekommen.
-Dieser wird benutzt um die Windows zu nummerieren.
+Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
+Dieser wird benutzt um die Fenster zu nummerieren.
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -54,12 +54,12 @@ Dieser wird benutzt um die Windows zu nummerieren.
     Win: PWindow;
     R: TRect;
   const
-    WinCounter: integer = 0;      // Zählt Windows
+    WinCounter: integer = 0;      // Zählt Fenster
   begin
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PWindow, Init(R, 'Windows', WinCounter));
-    // Wen zu wenig Speicher für Windows, dann Counter wieder -1.
+    Win := New(PWindow, Init(R, 'Fenster', WinCounter));
+    // Wen zu wenig Speicher für Fenster, dann Counter wieder -1.
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end else begin
@@ -68,7 +68,7 @@ Dieser wird benutzt um die Windows zu nummerieren.
   end;
 ```
 
-**cmNewWin** muss man selbst abarbeiten. **cmClose** für das Schliessen des Windows läuft es im Hintergrund automatisch.
+**cmNewWin** muss man selbst abarbeiten. **cmClose** für das Schliessen des Fenster läuft es im Hintergrund automatisch.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -78,7 +78,7 @@ Dieser wird benutzt um die Windows zu nummerieren.
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
-          NewWindows;    // Windows erzeugen.
+          NewWindows;    // Fenster erzeugen.
         end;
         else begin
           Exit;

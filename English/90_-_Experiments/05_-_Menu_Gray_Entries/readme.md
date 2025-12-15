@@ -1,5 +1,5 @@
 # 90 - Experiments
-## 05 - Menu Gray Entries
+## 05 - Menu graue Eintraege
 
 ![image.png](image.png)
 

@@ -1,5 +1,5 @@
 # 12 - Editor
-## 05 - Save and Open
+## 05 - Speichern und oeffnen
 
 ![image.png](image.png)
 
@@ -32,9 +32,9 @@ Der **Speichern unter**-Dialog ist schon fest verbaut, aber leider in Englisch.
 Daher wird diese Funktion auf eine eigene Routine umgeleitet.
 Auch habe ich die Maske ***.*** durch ***.txt** ersetzt.
 Für die restlichen Diloage, werden die original Routinen verwendet, dies geschieht mit **StdEditorDialog(...**.
-Die Deklaration von **MyApp** ist schon hier oben, weil sie hier schon gebraucht wird.
+Die Deklaration von **MyApp** ist schon hier up, weil sie hier schon gebraucht wird.
 
-Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.
+Bei MyApp.Init werden noch die neuen Standard-Dialogs zugeordnet.
 
 ```pascal
 var
@@ -47,7 +47,7 @@ var
         Result := MyApp.ExecuteDialog(New(PFileDialog, Init('*.txt', 'Datei speichern unter', '~F~ile-Name', fdOkButton, 101)), Info);
       end;
     else
-      StdEditorDialog(Dialog, Info);  // Original Dialoge aufrufen.
+      StdEditorDialog(Dialog, Info);  // Original Dialogs aufrufen.
     end;
   end;
 
@@ -131,7 +131,7 @@ Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, die
     FileName := '*.*';
     New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~F~ilename', fdOpenButton, 1));
     if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
-      NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+      NewWindows(FileName); // Neues Fenster mit der ausselecteden Datei.
     end;
   end;
 ```

@@ -1,5 +1,5 @@
 # 90 - Experiments
-## 20 - Simple MessageBox with Dlg
+## 20 - Einfache MessageBox mit Dlg
 
 ![image.png](image.png)
 

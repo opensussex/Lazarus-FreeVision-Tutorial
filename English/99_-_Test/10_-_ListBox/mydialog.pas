@@ -91,8 +91,8 @@ begin
       case Event.Command of
         cmTag: begin
           str(ListBox^.Focused + 1, s);
-          MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          ClearEvent(Event);   // Event beenden.
+          MessageBox('Weekday: ' + s + ' selected', nil, mfOKButton);
+          ClearEvent(Event);   // End event.
         end;
       end;
     end;

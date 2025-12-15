@@ -1,19 +1,19 @@
 //image image.png
 (*
-Windows verwalten. Nun ist es möglich über das Menu Steuerkomandos für die Windowsverwaltung zu geben.
-ZB. Zoom, verkleinern, Windowswechsel, Kaskade, etc.
+Fenster verwalten. Nun ist es möglich über das Menu Steuerkomandos für die Fensterverwaltung zu geben.
+ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.
 *)
 //lineal
 program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Windowsbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit), Window
+  Views,    // Event (cmQuit), Window
   MsgBox,
-  Editors,  // Messageboxen
-  Dialogs,  // Dialoge
+  Editors,  // Message boxes
+  Dialogs,  // Dialogs
   Menus;    // Status line
 
 const
@@ -39,7 +39,7 @@ type
   constructor TMyApp.Init;
   begin
     inherited Init;   // Der Vorfahre aufrufen.
-    NewWindows;       // Windows erzeugen.
+    NewWindows;       // Fenster erzeugen.
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -56,7 +56,7 @@ type
   end;
 
 (*
-Das Menu wurde um die Steuerbefehle für die Windowsverwatung ergänzt.
+Das Menu wurde um die Steuerbefehle für die Fensterverwatung ergänzt.
 Die ausgeklammerten Kommandos müssen manuel gemacht werden.
 *)
   //code+
@@ -94,8 +94,8 @@ Die ausgeklammerten Kommandos müssen manuel gemacht werden.
   end;
 
 (*
-Beim Windows erzeugen, ist noch ein Counter hinzugekommen.
-Wen man bei den Windows eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.
+Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
+Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.
 *)
   //code+
   procedure TMyApp.NewWindows;
@@ -103,11 +103,11 @@ Wen man bei den Windows eine überlappend oder nebeneinader Darstellung will, mu
     Win: PWindow;
     R: TRect;
   const
-    WinCounter: integer = 0;                    // Zählt Windows
+    WinCounter: integer = 0;                    // Zählt Fenster
   begin
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PWindow, Init(R, 'Windows', WinCounter));
+    Win := New(PWindow, Init(R, 'Fenster', WinCounter));
     Win^.Options := Win^.Options or ofTileable; // Für Tile und Cascade
 
     if ValidView(Win) <> nil then begin
@@ -118,8 +118,8 @@ Wen man bei den Windows eine überlappend oder nebeneinader Darstellung will, mu
   end;
 //code-
 (*
-Diese Procedure schliesst alle Windows im Desktop.
-Dazu wird jedem Windows mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.
+Diese Procedure schliesst alle Fenster im Desktop.
+Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.
 *)
 //code+
   procedure TMyApp.CloseAll;
@@ -136,7 +136,7 @@ Dazu wird jedem Windows mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.
 
 
 (*
-<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Windows läuft im Hintergrund automatisch.
+<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.
 *)
 //code+
 
@@ -147,10 +147,10 @@ Dazu wird jedem Windows mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
-          NewWindows;    // Windows erzeugen.
+          NewWindows;    // Fenster erzeugen.
         end;
         cmCloseAll:begin
-          CloseAll;      // Schliesst alle Windows.
+          CloseAll;      // Schliesst alle Fenster.
         end;
         cmRefresh: begin
           ReDraw;        // Anwendung neu zeichnen.

@@ -7,11 +7,11 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  Dialogs;  // Dialoge
+  Dialogs;  // Dialogs
 
 const
   cmAbout = 1001;     // Show about
@@ -170,7 +170,7 @@ Den Dialog mit Buttons ergänzen.
 Mit <b>Insert</b> fügt man die Komponenten hinzug, in diesem Fall sind es die Buttons.
 Mit bfDefault legt man den Default-Button fest, dieser wird mit <b>[Enter]</b> aktiviert.
 bfNormal ist ein gewöhnlicher Button.
-Der Dialog wird nun Modal geöffnet, somit können <b>keine</b> weiteren Dialoge geöffnet werden.
+Der Dialog wird nun Modal geöffnet, somit können <b>keine</b> weiteren Dialogs geöffnet werden.
 dummy hat den Wert, des Button der gedrückt wurde, dies entspricht dem <b>cmxxx</b> Wert.
 Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhafte Darstellung.
 *)
@@ -195,7 +195,7 @@ Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhaf
       Insert(new(PButton, Init(R, '~C~ancel', cmCancel, bfNormal)));
     end;
     dummy := Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
-    Dispose(Dia, Done);                // Dialog und Speicher frei geben.
+    Dispose(Dia, Done);                // Release dialog and memory.
   end;
   //code-
 

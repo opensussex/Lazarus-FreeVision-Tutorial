@@ -3,11 +3,11 @@
 
 ![image.png](image.png)
 
-Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.
-Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.
+You can catch an event handle in the dialog/window, when you move/click the mouse.
+There is nothing special in the main program for this, this all runs locally in the dialog/window.
 
 ---
-Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.
+In the main program, only the dialog is built, called and closed.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -20,9 +20,9 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.
       case Event.Command of
         cmKeyAktion: begin
           KeyDialog := New(PMyKey, Init);
-          if ValidView(KeyDialog) <> nil then begin // Prüfen ob genügend Speicher.
-            Desktop^.ExecView(KeyDialog);           // Dialog Mausaktion ausführen.
-            Dispose(KeyDialog, Done);               // Dialog und Speicher frei geben.
+          if ValidView(KeyDialog) <> nil then begin // Check if enough memory.
+            Desktop^.ExecView(KeyDialog);           // Execute mouse action dialog.
+            Dispose(KeyDialog, Done);               // Release dialog and memory.
           end;
         end;
         else begin
@@ -44,7 +44,7 @@ unit MyDialog;
 
 ```
 
-In dem Object sind die **PEditLine** globel deklariert, da diese später bei Mausaktionen modifiziert werden.
+In the object the.*are declared globally, because these are modified later during mouse actions.
 
 ```pascal
 type
@@ -59,8 +59,8 @@ type
 
 ```
 
-Es wird ein Dialog mit EditLine, Label und Button gebaut.
-Einzig besonderes dort, die **Editlline** wird der Status auf **ReadOnly** gesetzt eigene Eingaben sind dort unerwünscht.
+A dialog with EditLine, Label and Button is built.
+The only special thing there, the.*status is set to own inputs are undesirable there.
 
 ```pascal
 constructor TMyKey.Init;
@@ -110,9 +110,9 @@ end;
 
 ```
 
-Im EventHandle sieht man, das die Tastatur abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.
+Im EventHandle sieht man, das die Keyboard abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.
 In der untersten Zeile erscheint ein 3, wen die Shift-Taste mit gewissen anderen Tasten zB. Pfeil-Tasten gedrückt wird.
-Die Tastatur-Daten werden an die **EditLines** ausgegeben.
+The keyboard data is output to the.
 
 ```pascal
 procedure TMyKey.HandleEvent(var Event: TEvent);
@@ -120,7 +120,7 @@ begin
   inherited HandleEvent(Event);
 
   case Event.What of
-    evKeyDown: begin                 // Taste wurde gedrückt.
+    evKeyDown: begin                 // Key was pressed.
       EditZeichen^.Data^:= Event.CharCode;
       EditZeichen^.Draw;
       EditZeichenCode^.Data^:= IntToStr(Byte(Event.CharCode));

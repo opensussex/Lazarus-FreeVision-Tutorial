@@ -1,19 +1,19 @@
 //image image.png
 (*
-Erstes Memo-Windows.
+First Memo window.
 *)
 //lineal
 program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Windowsbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit), Window
+  Views,    // Event (cmQuit), Window
   Menus;    // Status line
 
 (*
-Der Constructor wird vererbt, so das von Anfang an ein neues Windows erstellt wird.
+The constructor is inherited, so that a new window is created from the beginning.
 *)
 //code+
 type
@@ -30,7 +30,7 @@ type
   constructor TMyApp.Init;
   begin
     inherited Init;   // Der Vorfahre aufrufen.
-    NewWindows;       // Windows erzeugen.
+    NewWindows;       // Fenster erzeugen.
   end;
   //code-
 
@@ -61,7 +61,7 @@ type
   end;
 
 (*
-Neues Windows erzeugen. Windows werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.
+Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.
 *)
   //code+
   procedure TMyApp.NewWindows;
@@ -70,7 +70,7 @@ Neues Windows erzeugen. Windows werden in der Regel nicht modal geöffnet, da ma
     R: TRect;
   begin
     R.Assign(0, 0, 60, 20);
-    Win := New(PWindow, Init(R, 'Windows', wnNoNumber));
+    Win := New(PWindow, Init(R, 'Fenster', wnNoNumber));
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end;

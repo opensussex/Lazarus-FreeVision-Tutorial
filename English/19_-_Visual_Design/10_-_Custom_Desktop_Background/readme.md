@@ -1,5 +1,5 @@
 # 19 - Visual Design
-## 10 --Custom Desktop Background
+## 10 --Eigener Desktop Hintergrund
 
 ![image.png](image.png)
 

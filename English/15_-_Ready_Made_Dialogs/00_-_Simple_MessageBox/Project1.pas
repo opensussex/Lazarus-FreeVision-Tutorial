@@ -1,15 +1,15 @@
 //image image.png
 (*
-Die einfachsten Dialoge sind die fertigen MessageBoxen.
+Die einfachsten Dialogs sind die fertigen MessageBoxen.
 *)
 //lineal
 program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   MsgBox,   // MessageBox
   Menus;    // Status line
 

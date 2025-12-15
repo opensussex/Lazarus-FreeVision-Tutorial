@@ -4,7 +4,7 @@
 ![image.png](image.png)
 
 If the string list should remain unsorted, use **PUnSortedStrCollection**.
-Only.*is not enough**, because this crashes at.
+Only PCollection is not enough**, because this crashes at Dispose.
 
 ---
 
@@ -53,7 +53,7 @@ begin
     s := s + PString(StringCollection^.At(i))^ + #13;
   end;
 
-  Dispose(StringCollection, Done); // Die Liste freigeben
+  Dispose(StringCollection, Done); // Release the list
 
   R.Assign(5, 2, 36, 12);
   Insert(new(PStaticText, Init(R, s)));

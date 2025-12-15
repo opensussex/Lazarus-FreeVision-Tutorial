@@ -1,5 +1,5 @@
 # 19 - Visual Design
-## 15 --Background on Dialog
+## 15 --Hintergrund auf Dialog
 
 ![image.png](image.png)
 

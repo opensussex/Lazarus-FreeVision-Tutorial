@@ -1,10 +1,10 @@
 # 20 - Miscellaneous
-## 00 - Idle Handle a Clock
+## 00 - Idle Handle eine Uhr
 
 ![image.png](image.png)
 
 Hier wird gezeigt, wie man **Idle** verwenden kann.
-Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.
+Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogsn zu aktualiesieren.
 Das Object mit dem UhrenDialog befindet sich in der Unit **UhrDialog**.
 
 ---
@@ -18,7 +18,7 @@ const
 
 Hier befindet sich die wichtigste Methode **Idle**.
 Diese Methode wird aufgerufen, wen die CPU sonst nichts zu tun hat.
-Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.
+Hier wird sie verwendet um die Uhr-Zeit in den Dialogsn zu aktualiesieren.
 
 ```pascal
 type
@@ -119,7 +119,7 @@ unit UhrDialog;
 
 ```
 
-Die Deklaration des Dialoges.
+Die Deklaration des Dialogss.
 Hier wird in **ZeitStr** die Zeit gespeichert, so das sie mit **Draw** ausgegeben werden kann.
 
 ```pascal

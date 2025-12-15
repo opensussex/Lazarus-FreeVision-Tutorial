@@ -33,12 +33,12 @@ type
 implementation
 
 const
-  cmTag = 1000;  // Local event constant
+  cmTag = 1000;  // Lokale Event Konstante
 
 //done+
 destructor TNewListBox.Done;
 begin
-  Dispose(List, Done); // Die Liste freigeben
+  Dispose(List, Done); // Release the list
   inherited Done;
 end;
 //done-
@@ -109,13 +109,13 @@ begin
   case Event.What of
     evCommand: begin
       case Event.Command of
-        // Bei Doppelklick auf die ListBox oder beim [Ok] klicken.
+        // On double click on the ListBox or when clicking [Ok].
         cmOK: begin
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
         end;
         cmTag: begin
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          // Event beenden.
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
+          // End event.
           ClearEvent(Event);
         end;
       end;

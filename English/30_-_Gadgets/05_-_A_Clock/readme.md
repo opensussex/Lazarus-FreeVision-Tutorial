@@ -1,12 +1,12 @@
 # 30 - Gadgets
-## 05 - A Clock
+## 05 - Eine Uhr
 
 ![image.png](image.png)
 
 In diesem Beispiel wird ein kleines Gadgets geladen, welches eine **Uhr** anzeigt.
 
 ---
-    Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.
+    Erzeugt ein kleines Fenster rechts-down, welches die Uhr anzeigt.
 
 ```pascal
     GetExtent(R);
@@ -34,7 +34,7 @@ Den Dialog mit dem Speicher Leak aufrufen.
           MyDialog := New(PMyDialog, Init);
           if ValidView(MyDialog) <> nil then begin
             Desktop^.ExecView(MyDialog);   // Dialog ausführen.
-            Dispose(MyDialog, Done);       // Dialog und Speicher frei geben.
+            Dispose(MyDialog, Done);       // Release dialog and memory.
           end;
         end;
         // Ein FileOpenDialog, bei dem alles in Ordnung ist.
@@ -42,7 +42,7 @@ Den Dialog mit dem Speicher Leak aufrufen.
           FileName := '*.*';
           New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~F~ilename', fdOpenButton, 1));
           if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
-            NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+            NewWindows(FileName); // Neues Fenster mit der ausselecteden Datei.
           end;
         end
         else begin
@@ -77,7 +77,7 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.
 
 
 ---
-**Unit mit dem neuen Dialog.**
+**Unit with the new dialog.**
 <br>
 Der Dialog mit dem dem Speicher Leak
 
@@ -114,8 +114,8 @@ var
   ScrollBar: PScrollBar;
   i: Sw_Integer;
 const
-  Tage: array [0..6] of shortstring = (
-    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
+  Days: array [0..6] of shortstring = (
+    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 
 begin
   R.Assign(10, 5, 64, 17);
@@ -123,8 +123,8 @@ begin
 
   // StringCollection
   StringCollection := new(PStringCollection, Init(5, 5));
-  for i := 0 to Length(Tage) - 1 do begin
-    StringCollection^.Insert(NewStr(Tage[i]));
+  for i := 0 to Length(Days) - 1 do begin
+    StringCollection^.Insert(NewStr(Days[i]));
   end;
 
   // ScrollBar für ListBox
@@ -181,8 +181,8 @@ begin
         end;
         cmTag: begin
           str(ListBox^.Focused + 1, s);
-          MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          ClearEvent(Event);  // Event beenden.
+          MessageBox('Weekday: ' + s + ' selected', nil, mfOKButton);
+          ClearEvent(Event);  // End event.
         end;
       end;
     end;

@@ -1,13 +1,13 @@
 # 12 - Editor
-## 10 - Search Replace
+## 10 - Suchen Ersetzen
 
 ![image.png](image.png)
 
 Der Editor hat eine **Suchen** und **Ersetzen** Funktion bekommen.
-Leider sind die Standard-Dialoge dafür in Englisch.
+Leider sind die Standard-Dialogs dafür in Englisch.
 Aus diesem Grund, wird es hier neu in deutsch gebaut.
 Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialog der Fall ist.
-Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menu anpassen, der Rest geschieht automatisch.
+Gibt man sich mit den englischen Dialogsn zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menu anpassen, der Rest geschieht automatisch.
 
 ---
 Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verdeutscht.
@@ -112,7 +112,7 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
   end;
 ```
 
-Hier wird die neuen Dialoge eingefügt.
+Hier wird die neuen Dialogs eingefügt.
 
 ```pascal
   function MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
@@ -130,7 +130,7 @@ Hier wird die neuen Dialoge eingefügt.
       end;
       else begin
         Result := StdEditorDialog(Dialog, Info);
-      end;                                      // Original Dialoge aufrufen.
+      end;                                      // Original Dialogs aufrufen.
     end;
   end;
 ```

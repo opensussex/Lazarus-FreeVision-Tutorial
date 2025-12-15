@@ -1,13 +1,13 @@
 # 11 - Windows
-## 10 - Windows verwalten
+## 10 - Manage Windows
 
 ![image.png](image.png)
 
-Windows verwalten. Nun ist es möglich über das Menu Steuerkomandos für die Windowsverwaltung zu geben.
-ZB. Zoom, verkleinern, Windowswechsel, Kaskade, etc.
+Fenster verwalten. Nun ist es möglich über das Menu Steuerkomandos für die Fensterverwaltung zu geben.
+ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.
 
 ---
-Das Menu wurde um die Steuerbefehle für die Windowsverwatung ergänzt.
+Das Menu wurde um die Steuerbefehle für die Fensterverwatung ergänzt.
 Die ausgeklammerten Kommandos müssen manuel gemacht werden.
 
 ```pascal
@@ -39,8 +39,8 @@ Die ausgeklammerten Kommandos müssen manuel gemacht werden.
   end;
 ```
 
-Beim Windows erzeugen, ist noch ein Counter hinzugekommen.
-Wen man bei den Windows eine überlappend oder nebeneinader Darstellung will, muss man noch den Status **ofTileable** setzen.
+Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
+Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status **ofTileable** setzen.
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -48,11 +48,11 @@ Wen man bei den Windows eine überlappend oder nebeneinader Darstellung will, mu
     Win: PWindow;
     R: TRect;
   const
-    WinCounter: integer = 0;                    // Zählt Windows
+    WinCounter: integer = 0;                    // Zählt Fenster
   begin
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PWindow, Init(R, 'Windows', WinCounter));
+    Win := New(PWindow, Init(R, 'Fenster', WinCounter));
     Win^.Options := Win^.Options or ofTileable; // Für Tile und Cascade
 
     if ValidView(Win) <> nil then begin
@@ -63,8 +63,8 @@ Wen man bei den Windows eine überlappend oder nebeneinader Darstellung will, mu
   end;
 ```
 
-Diese Procedure schliesst alle Windows im Desktop.
-Dazu wird jedem Windows mit **ForEach** ein **cmClose**-Event gesendet.
+Diese Procedure schliesst alle Fenster im Desktop.
+Dazu wird jedem Fenster mit **ForEach** ein **cmClose**-Event gesendet.
 
 ```pascal
   procedure TMyApp.CloseAll;
@@ -79,7 +79,7 @@ Dazu wird jedem Windows mit **ForEach** ein **cmClose**-Event gesendet.
   end;
 ```
 
-**cmNewWin** muss man selbst abarbeiten. **cmClose** für das Schliessen des Windows läuft im Hintergrund automatisch.
+**cmNewWin** muss man selbst abarbeiten. **cmClose** für das Schliessen des Fenster läuft im Hintergrund automatisch.
 
 ```pascal
 
@@ -90,10 +90,10 @@ Dazu wird jedem Windows mit **ForEach** ein **cmClose**-Event gesendet.
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
-          NewWindows;    // Windows erzeugen.
+          NewWindows;    // Fenster erzeugen.
         end;
         cmCloseAll:begin
-          CloseAll;      // Schliesst alle Windows.
+          CloseAll;      // Schliesst alle Fenster.
         end;
         cmRefresh: begin
           ReDraw;        // Anwendung neu zeichnen.

@@ -1,6 +1,6 @@
 //image image.png
 (*
-In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.
+In den vererbten Dialogsn ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
 *)
 //lineal
@@ -8,12 +8,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
   MyDialog;
 
 const
@@ -24,7 +24,7 @@ type
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -68,9 +68,9 @@ Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas ge
       case Event.Command of                   // About Dialog
         cmAbout: begin
           AboutDialog := New(PMyAbout, Init);
-          if ValidView(AboutDialog) <> nil then begin // Prüfen ob genügend Speicher.
+          if ValidView(AboutDialog) <> nil then begin // Check if enough memory.
             Desktop^.ExecView(AboutDialog);           // Dialog About ausführen.
-            Dispose(AboutDialog, Done);               // Dialog und Speicher frei geben.
+            Dispose(AboutDialog, Done);               // Release dialog and memory.
           end;
         end;
         else begin
@@ -97,9 +97,9 @@ begin
 
 //lineal
 (*
-<b>Unit mit dem neuen Dialog.</b>
+<b>Unit with the new dialog.</b>
 <br>
-Dort sieht man gut, das es ein Button für lokale Ereignisse hat.
+Dort sieht man gut, das es ein Button für lokale Evente hat.
 Wichtig ist, bei den Nummernvergabe, das sich dies nicht mit einem anderen Eventnummer überschneidet.
 Vor allem dann, wen der Dialog nicht Modal geöffnet wird.
 Ausser es ist gewünscht, wen man zB. über das Menu auf den Dialog zugreifen will.
@@ -112,13 +112,13 @@ Für den Dialog kommt noch ein HandleEvent hinzu.
 //includepascal mydialog.pas type
 
 (*
-Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss <b>cmMsg</b> abarbeitet.
+Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Event <b>cmMsg</b> abarbeitet.
 *)
 //includepascal mydialog.pas init
 
 (*
-Im neuen EventHandle, werden loake Ereigniss (cmMsg) abarbeitet.
-Andere Ereignisse, zB. <b>cmOk</b> wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.
+Im neuen EventHandle, werden loake Event (cmMsg) abarbeitet.
+Andere Evente, zB. <b>cmOk</b> wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.
 *)
 //includepascal mydialog.pas handleevent
 

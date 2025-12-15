@@ -4,7 +4,7 @@
 ![image.png](image.png)
 
 Bei **ListBox** kann man auch Einträge einfügen, entfernen, etc.
-ZT. muss man da direkt auf die Liste zugreifen.
+Currently you must access the list directly.
 
 ---
 
@@ -18,7 +18,7 @@ unit MyDialog;
 
 ```
 
-Declare the, which releases the.*of the list.
+Declare the Destructor, which releases the memory of the list.
 
 ```pascal
 type
@@ -63,7 +63,7 @@ begin
     StringCollection^.Insert(NewStr(Days[i]));
   end;
 
-  // ScrollBar für ListBox
+  // ScrollBar for ListBox
   R.Assign(22, 2, 23, 16);
   ScrollBar := new(PScrollBar, Init(R));
   Insert(ScrollBar);
@@ -75,7 +75,7 @@ begin
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 
-  // Tag-Button
+  // Tag button
   R.A.X := R.B.X + 5;
   R.B.X := R.A.X + 14;
   R.A.Y := 2;
@@ -94,29 +94,29 @@ begin
   R.Move(0, 2);
   Insert(new(PButton, Init(R, '~E~ntfernen', cmDelete, bfNormal)));
 
-  // Cancel-Button
+  // Cancel button
   R.Move(0, 3);
-  Insert(new(PButton, Init(R, '~C~ancel', cmCancel, bfNormal)));
+  Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
 
-  // Ok-Button
+  // Ok button
   R.Move(0, 2);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
 
 ```
 
-Manuell den Speicher der Liste frei geben.
+Manually release the memory of the list.
 
 ```pascal
 destructor TMyDialog.Done;
 begin
-  Dispose(ListBox^.List, Done); // Die Liste freigeben
+  Dispose(ListBox^.List, Done); // Release the list
   inherited Done;
 end;
 
 ```
 
-Der EventHandle
+The event handle
 Hier sieht man, wie man Einträge einfügt und entfernt.
 
 ```pascal
@@ -126,7 +126,7 @@ begin
     evCommand: begin
       case Event.Command of
         cmOK: begin
-          // mache etwas
+          // do something
         end;
         cmNewFocus: begin
           // Fügt beim markierten Eintrag einen neuen Eintrag ein
@@ -147,9 +147,9 @@ begin
         cmMonat: begin
           // Eintrag mit Fokus ausgeben
           if ListBox^.List^.Count > 0 then begin
-            MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+            MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
           end;
-          // Event beenden.
+          // End event.
           ClearEvent(Event);
         end;
       end;

@@ -1,6 +1,6 @@
 //image image.png
 (*
-Dem Windows wurden noch Scrollbalken spendiert.
+Dem Fenster wurden noch Scrollbalken spendiert.
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.
 Und das wichtigste für einen Editor, ein Memo in dem man schreiben kann.
 
@@ -19,7 +19,7 @@ uses
   Editors,
   Dialogs,
   Menus,
-  MyWindow;    // Für das eigene Windows.
+  MyWindow;    // Für das eigene Fenster.
 
 const
   cmNewWin = 1001;
@@ -41,7 +41,7 @@ type
   constructor TMyApp.Init;
   begin
     inherited Init;   // Der Vorfahre aufrufen.
-    NewWindows;       // Windows erzeugen.
+    NewWindows;       // Fenster erzeugen.
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -98,11 +98,11 @@ Hier wird das neue vererbte Windows erzeugt.
     Win: PMyWindow;
     R: TRect;
   const
-    WinCounter: integer = 0;      // Zählt Windows
+    WinCounter: integer = 0;      // Zählt Fenster
   begin
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PMyWindow, Init(R, 'Windows', WinCounter));
+    Win := New(PMyWindow, Init(R, 'Fenster', WinCounter));
 
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
@@ -130,10 +130,10 @@ Hier wird das neue vererbte Windows erzeugt.
     if Event.What = evCommand then begin
       case Event.Command of
       cmNewWin: begin
-        NewWindows;    // Windows erzeugen.
+        NewWindows;    // Fenster erzeugen.
       end;
       cmCloseAll:begin
-        CloseAll;      // Schliesst alle Windows.
+        CloseAll;      // Schliesst alle Fenster.
       end;
       cmRefresh: begin
         ReDraw;        // Anwendung neu zeichnen.
@@ -156,7 +156,7 @@ begin
 
 //lineal
 (*
-<b>Unit mit dem neuen Windows.</b>
+<b>Unit mit dem neuen Fenster.</b>
 <br>
 *)
 //includepascal mywindow.pas head

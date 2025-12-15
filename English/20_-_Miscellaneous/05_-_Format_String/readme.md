@@ -1,5 +1,5 @@
 # 20 - Miscellaneous
-## 05 - Format String
+## 05 - String formatieren
 
 ![image.png](image.png)
 
@@ -44,8 +44,8 @@ constructor TMyDialog.Init;
 const
   acht = 8;
   vier = 16;
-  Mo = 'Montag';
-  Fr = 'Freitag';
+  Mo = 'Monday';
+  Fr = 'Friday';
 
 var
   R: TRect;
@@ -71,7 +71,7 @@ begin
 
   R.Assign(0, 0, 52, 13);
   R.Move(23, 3);
-  inherited Init(R, 'Format String');
+  inherited Init(R, 'String formatieren');
 
   // ---Statictext;
   R.Assign(3, 2, 50, 5);

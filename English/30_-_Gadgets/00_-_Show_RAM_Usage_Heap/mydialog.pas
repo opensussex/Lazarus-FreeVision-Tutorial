@@ -34,8 +34,8 @@ var
   ScrollBar: PScrollBar;
   i: Sw_Integer;
 const
-  Tage: array [0..6] of shortstring = (
-    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
+  Days: array [0..6] of shortstring = (
+    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 
 begin
   R.Assign(10, 5, 64, 17);
@@ -43,8 +43,8 @@ begin
 
   // StringCollection
   StringCollection := new(PStringCollection, Init(5, 5));
-  for i := 0 to Length(Tage) - 1 do begin
-    StringCollection^.Insert(NewStr(Tage[i]));
+  for i := 0 to Length(Days) - 1 do begin
+    StringCollection^.Insert(NewStr(Days[i]));
   end;
 
   // ScrollBar für ListBox
@@ -93,8 +93,8 @@ begin
         end;
         cmTag: begin
           str(ListBox^.Focused + 1, s);
-          MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          ClearEvent(Event);  // Event beenden.
+          MessageBox('Weekday: ' + s + ' selected', nil, mfOKButton);
+          ClearEvent(Event);  // End event.
         end;
       end;
     end;

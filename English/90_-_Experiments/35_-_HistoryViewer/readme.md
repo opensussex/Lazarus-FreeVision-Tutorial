@@ -11,9 +11,9 @@ Dort fehlt der **destructor**, welcher den Speicher aufräumt.
 ---
 
 ---
-**Unit mit dem neuen Dialog.**
+**Unit with the new dialog.**
 <br>
-Der Dialog mit der ListBox
+The dialog with the ListBox
 
 ```pascal
 unit MyDialog;
@@ -49,8 +49,8 @@ var
   i: Integer;
   hw:PHistoryViewer;
 const
-  Tage: array [0..6] of shortstring = (
-    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
+  Days: array [0..6] of shortstring = (
+    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 
 begin
   R.Assign(10, 5, 64, 17);
@@ -58,8 +58,8 @@ begin
 
   // StringCollection
   StringCollection := new(PUnSortedStrCollection, Init(5, 5));
-  for i := 0 to Length(Tage) - 1 do begin
-    StringCollection^.Insert(NewStr(Tage[i]));
+  for i := 0 to Length(Days) - 1 do begin
+    StringCollection^.Insert(NewStr(Days[i]));
   end;
 
   // HScrollBar für ListBox
@@ -103,12 +103,12 @@ end;
 
 ```
 
-Manuell den Speicher der Liste frei geben.
+Manually release the memory of the list.
 
 ```pascal
 destructor TMyDialog.Done;
 begin
-//  Dispose(ListBox^.List, Done); // Die Liste freigeben
+//  Dispose(ListBox^.List, Done); // Release the list
   inherited Done;
 end;
 
@@ -129,8 +129,8 @@ begin
         cmTag: begin
           // Eintrag mit Fokus auslesen
           // Und ausgeben
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          // Event beenden.
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
+          // End event.
           ClearEvent(Event);
         end;
       end;

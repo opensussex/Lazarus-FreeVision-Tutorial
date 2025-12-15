@@ -3,7 +3,7 @@
 
 ![image.png](image.png)
 
-In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.
+In den vererbten Dialogsn ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
 
 ---
@@ -20,9 +20,9 @@ Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas ge
       case Event.Command of                   // About Dialog
         cmAbout: begin
           AboutDialog := New(PMyAbout, Init);
-          if ValidView(AboutDialog) <> nil then begin // Prüfen ob genügend Speicher.
+          if ValidView(AboutDialog) <> nil then begin // Check if enough memory.
             Desktop^.ExecView(AboutDialog);           // Dialog About ausführen.
-            Dispose(AboutDialog, Done);               // Dialog und Speicher frei geben.
+            Dispose(AboutDialog, Done);               // Release dialog and memory.
           end;
         end;
         else begin
@@ -36,9 +36,9 @@ Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas ge
 
 
 ---
-**Unit mit dem neuen Dialog.**
+**Unit with the new dialog.**
 <br>
-Dort sieht man gut, das es ein Button für lokale Ereignisse hat.
+Dort sieht man gut, das es ein Button für lokale Evente hat.
 Wichtig ist, bei den Nummernvergabe, das sich dies nicht mit einem anderen Eventnummer überschneidet.
 Vor allem dann, wen der Dialog nicht Modal geöffnet wird.
 Ausser es ist gewünscht, wen man zB. über das Menu auf den Dialog zugreifen will.
@@ -65,7 +65,7 @@ type
 
 ```
 
-Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss **cmMsg** abarbeitet.
+Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Event **cmMsg** abarbeitet.
 
 ```pascal
 constructor TMyAbout.Init;
@@ -99,7 +99,7 @@ begin
 
   Insert(Tab);
 
-  // MessageBox-Button, mit lokalem Ereigniss.
+  // MessageBox-Button, mit lokalem Event.
   R.Assign(19, 13, 32, 15);
   Insert(new(PButton, Init(R, '~M~sg-Box', cmMsg, bfNormal)));
 
@@ -110,8 +110,8 @@ end;
 
 ```
 
-Im neuen EventHandle, werden loake Ereigniss (cmMsg) abarbeitet.
-Andere Ereignisse, zB. **cmOk** wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.
+Im neuen EventHandle, werden loake Event (cmMsg) abarbeitet.
+Andere Evente, zB. **cmOk** wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.
 
 ```pascal
 procedure TMyAbout.HandleEvent(var Event: TEvent);
@@ -121,10 +121,10 @@ begin
   case Event.What of
     evCommand: begin
       case Event.Command of
-        // Lokales Ereigniss ausführen.
+        // Lokales Event ausführen.
         cmMsg: begin
           MessageBox('Ich bin eine MessageBox !', nil, mfOKButton);
-          ClearEvent(Event);  // Event beenden.
+          ClearEvent(Event);  // End event.
         end;
       end;
     end;

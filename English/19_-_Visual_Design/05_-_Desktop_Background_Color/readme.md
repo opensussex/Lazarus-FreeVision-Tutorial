@@ -1,5 +1,5 @@
 # 19 - Visual Design
-## 05 --Desktop Background Color
+## 05 --Desktop-Hintergrund Farbe
 
 ![image.png](image.png)
 

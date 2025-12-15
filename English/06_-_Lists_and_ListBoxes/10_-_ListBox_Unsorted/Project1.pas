@@ -1,33 +1,33 @@
 //image image.png
 (*
-With TListBox you must absolutely release the memory of TList with a destructor.
-This is not typical for Free-Vision. This also makes sense, because lists are often used globally, 
-otherwise you would always have to create a copy of it.
-There the.*is missing <b>destructor</b>, which cleans up the memory.
+Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.
+Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, 
+ansonsten müsste man immer eine Kopie davon anlegen.
+Dort fehlt der <b>destructor</b>, welcher den Speicher aufräumt.
 *)
 //lineal
 program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
-  StdDlg,   // Für Datei öffnen
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
+  StdDlg,   // For file open
   MyDialog;
 
 const
-  cmDialog   = 1001;     // Dialog anzeigen
+  cmDialog   = 1001;     // Show dialog
 
 type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
     procedure NewWindows(Titel: ShortString);
   end;
 
@@ -77,7 +77,7 @@ type
           MyDialog := New(PMyDialog, Init);
           if ValidView(MyDialog) <> nil then begin
             Desktop^.ExecView(MyDialog);   // Dialog ausführen.
-            Dispose(MyDialog, Done);       // Dialog und Speicher frei geben.
+            Dispose(MyDialog, Done);       // Release dialog and memory.
           end;
         end
         else begin
@@ -123,17 +123,17 @@ The dialog with the ListBox
 //includepascal mydialog.pas head
 
 (*
-Declare the, which releases the.*of the list.
+Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.
 *)
 //includepascal mydialog.pas type
 
 (*
-Generate components for the dialog.
+Komponenten für den Dialog generieren.
 *)
 //includepascal mydialog.pas init
 
 (*
-Manuell den Speicher der Liste frei geben.
+Manually release the memory of the list.
 *)
 //includepascal mydialog.pas done
 

@@ -29,7 +29,7 @@ var
 begin
   R.Assign(0, 0, 42, 13);
   R.Move(23, 3);
-  inherited Init(R, 'Mausaktion');
+  inherited Init(R, 'Mouse Action');
 
   // PosX
   R.Assign(25, 2, 30, 3);
@@ -37,7 +37,7 @@ begin
   Insert(EditX);
   EditX^.State := sfDisabled or EditX^.State;    // ReadOnly
   R.Assign(5, 2, 20, 3);
-  Insert(New(PLabel, Init(R, 'MausPosition ~X~:', EditX)));
+  Insert(New(PLabel, Init(R, 'Mouse Position ~X~:', EditX)));
 
   // PosY
   R.Assign(25, 4, 30, 5);
@@ -45,13 +45,13 @@ begin
   EditY^.State := sfDisabled or EditY^.State;    // ReadOnly
   Insert(EditY);
   R.Assign(5, 4, 20, 5);
-  Insert(New(PLabel, Init(R, 'MausPosition ~Y~:', EditY)));
+  Insert(New(PLabel, Init(R, 'Mouse Position ~Y~:', EditY)));
 
   // Maus-Tasten
   R.Assign(25, 7, 32, 8);
   EditMB := new(PInputLine, Init(R, 7));
   EditMB^.State := sfDisabled or EditMB^.State;  // ReadOnly
-  EditMB^.Data^:= 'oben';                        // Anfangs ist die Taste oben.
+  EditMB^.Data^:= 'up';                        // Initially the key is up.
   Insert(EditMB);
   R.Assign(5, 7, 20, 8);
   Insert(New(PLabel, Init(R, '~M~austaste:', EditMB)));
@@ -70,16 +70,16 @@ begin
   inherited HandleEvent(Event);
 
   case Event.What of
-    evMouseDown: begin                 // Taste wurde gedrückt.
-      EditMB^.Data^:= 'unten';
+    evMouseDown: begin                 // Key was pressed.
+      EditMB^.Data^:= 'down';
       EditMB^.Draw;
     end;
-    evMouseUp: begin                   // Taste wurde losgelassen.
-      EditMB^.Data^:= 'oben';
+    evMouseUp: begin                   // Key was released.
+      EditMB^.Data^:= 'up';
       EditMB^.Draw;
     end;
-    evMouseMove: begin                 // Maus wurde bewegt.
-      MakeLocal (Event.Where, Mouse);  // Mausposition ermitteln.
+    evMouseMove: begin                 // Mouse was moved.
+      MakeLocal (Event.Where, Mouse);  // Determine mouse position.
       EditX^.Data^:= IntToStr(Mouse.X);
       EditX^.Draw;
       EditY^.Data^:= IntToStr(Mouse.Y);

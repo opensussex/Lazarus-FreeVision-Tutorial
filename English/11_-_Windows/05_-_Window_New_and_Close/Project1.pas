@@ -1,17 +1,17 @@
 //image image.png
 (*
-Über das Menu Windows erzeigen und schliessen.
+Über das Menu Fenster erzeigen und schliessen.
 *)
 //lineal
 program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Windowsbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit), Window
+  Views,    // Event (cmQuit), Window
   MsgBox,
-  Editors,  // Messageboxen
+  Editors,  // Message boxes
   Menus;    // Status line
 
 (*
@@ -29,7 +29,7 @@ type
     procedure InitMenuBar; virtual;
 
     procedure HandleEvent(var Event: TEvent); virtual; // Abarbeitung Kommandos
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
 
     procedure NewWindows;
   end;
@@ -37,7 +37,7 @@ type
   constructor TMyApp.Init;
   begin
     inherited Init;   // Der Vorfahre aufrufen.
-    NewWindows;       // Windows erzeugen.
+    NewWindows;       // Fenster erzeugen.
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -79,8 +79,8 @@ Das Menu wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.
   end;
 
 (*
-Beim Windows erzeugen, ist noch ein Counter hinzugekommen.
-Dieser wird benutzt um die Windows zu nummerieren.
+Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
+Dieser wird benutzt um die Fenster zu nummerieren.
 *)
   //code+
   procedure TMyApp.NewWindows;
@@ -88,12 +88,12 @@ Dieser wird benutzt um die Windows zu nummerieren.
     Win: PWindow;
     R: TRect;
   const
-    WinCounter: integer = 0;      // Zählt Windows
+    WinCounter: integer = 0;      // Zählt Fenster
   begin
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PWindow, Init(R, 'Windows', WinCounter));
-    // Wen zu wenig Speicher für Windows, dann Counter wieder -1.
+    Win := New(PWindow, Init(R, 'Fenster', WinCounter));
+    // Wen zu wenig Speicher für Fenster, dann Counter wieder -1.
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end else begin
@@ -103,7 +103,7 @@ Dieser wird benutzt um die Windows zu nummerieren.
   //code-
 
 (*
-<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Windows läuft es im Hintergrund automatisch.
+<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft es im Hintergrund automatisch.
 *)
   //code+
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -113,7 +113,7 @@ Dieser wird benutzt um die Windows zu nummerieren.
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
-          NewWindows;    // Windows erzeugen.
+          NewWindows;    // Fenster erzeugen.
         end;
         else begin
           Exit;

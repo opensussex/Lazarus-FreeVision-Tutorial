@@ -1,5 +1,5 @@
 # 15 - Ready Made Dialogs
-## 10 - Simple MessageBox mit Vorgabe Rect
+## 10 - Einfache MessageBox mit Vorgabe Rect
 
 ![image.png](image.png)
 

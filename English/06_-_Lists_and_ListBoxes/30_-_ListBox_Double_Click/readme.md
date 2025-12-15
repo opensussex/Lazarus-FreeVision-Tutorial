@@ -3,7 +3,7 @@
 
 ![image.png](image.png)
 
-Will man bei einer **ListBox** den Doppelklick auswerten, muss man die ListBox vererben und einen neuen Handleevent einfügen.
+If you want to evaluate the double click on a ListBox, you must inherit the ListBox and insert a new HandleEvent.
 
 ---
 
@@ -17,8 +17,8 @@ unit MyDialog;
 
 ```
 
-Das Vererben der ListBox.
-Wen man schon vererbt, habe ich auch gleich den **Destructor** eingefügt, welcher am Schluss die Liste aufräumt.
+Inheriting the ListBox.
+If you are already inheriting, I have also inserted the destructor, which cleans up the list at the end.
 
 ```pascal
 type
@@ -42,7 +42,7 @@ type
 
 ```
 
-Der neue **HandleEvent** der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.
+The new HandleEvent of the new ListBox, which catches the double click and interprets it as [Ok].
 
 ```pascal
 procedure TNewListBox.HandleEvent(var Event: TEvent);
@@ -58,19 +58,19 @@ end;
 
 ```
 
-Manuell den Speicher der Liste frei geben.
+Manually release the memory of the list.
 
 ```pascal
 destructor TNewListBox.Done;
 begin
-  Dispose(List, Done); // Die Liste freigeben
+  Dispose(List, Done); // Release the list
   inherited Done;
 end;
 
 ```
 
-Der EventHandle des Dialogs.
-Hier wird einfach ein [Ok] bei dem Doppelklick abgearbeitet.
+The event handle of the dialog.
+Here an [Ok] is simply processed on double click.
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
@@ -78,13 +78,13 @@ begin
   case Event.What of
     evCommand: begin
       case Event.Command of
-        // Bei Doppelklick auf die ListBox oder beim [Ok] klicken.
+        // On double click on the ListBox or when clicking [Ok].
         cmOK: begin
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
         end;
         cmTag: begin
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          // Event beenden.
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
+          // End event.
           ClearEvent(Event);
         end;
       end;

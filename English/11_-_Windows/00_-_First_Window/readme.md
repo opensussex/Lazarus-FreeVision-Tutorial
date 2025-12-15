@@ -1,12 +1,12 @@
 # 11 - Windows
-## 00 - Erstes Windows
+## 00 - First Window
 
 ![image.png](image.png)
 
-Erstes Memo-Windows.
+First Memo window.
 
 ---
-Der Constructor wird vererbt, so das von Anfang an ein neues Windows erstellt wird.
+The constructor is inherited, so that a new window is created from the beginning.
 
 ```pascal
 type
@@ -25,11 +25,11 @@ type
   constructor TMyApp.Init;
   begin
     inherited Init;   // Der Vorfahre aufrufen.
-    NewWindows;       // Windows erzeugen.
+    NewWindows;       // Fenster erzeugen.
   end;
 ```
 
-Neues Windows erzeugen. Windows werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.
+Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -38,7 +38,7 @@ Neues Windows erzeugen. Windows werden in der Regel nicht modal geöffnet, da ma
     R: TRect;
   begin
     R.Assign(0, 0, 60, 20);
-    Win := New(PWindow, Init(R, 'Windows', wnNoNumber));
+    Win := New(PWindow, Init(R, 'Fenster', wnNoNumber));
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end;

@@ -17,7 +17,7 @@ type
     StringCollection: PUnSortedStrCollection;
 
     constructor Init;
-    destructor Done; virtual;  // Because of memory leak in TList
+    destructor Done; virtual;  // Wegen Speicher Leak in TList
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
 //type-
@@ -26,7 +26,7 @@ implementation
 
 //init+
 const
-  cmMonat = 1000;  // Local event constant
+  cmMonat = 1000;  // Lokale Event Konstante
   cmNewFocus = 1001;
   cmNewBack = 1002;
   cmDelete = 1003;
@@ -95,7 +95,7 @@ end;
 //done+
 destructor TMyDialog.Done;
 begin
-  Dispose(ListBox^.List, Done); // Die Liste freigeben
+  Dispose(ListBox^.List, Done); // Release the list
   inherited Done;
 end;
 //done-
@@ -128,9 +128,9 @@ begin
         cmMonat: begin
           // Eintrag mit Fokus ausgeben
           if ListBox^.List^.Count > 0 then begin
-            MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+            MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
           end;
-          // Event beenden.
+          // End event.
           ClearEvent(Event);
         end;
       end;

@@ -1,6 +1,6 @@
 //image image.png
 (*
-In den vererbten Dialogen ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.
+In den vererbten Dialogsn ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
 *)
 //lineal
@@ -8,12 +8,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
   MyDialog;
 
 const
@@ -24,7 +24,7 @@ type
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -67,9 +67,9 @@ type
       case Event.Command of                   // About Dialog
         cmAbout: begin
           MyDialog := New(PMyDialog, Init);
-//          if ValidView(MyDialog) <> nil then begin // Prüfen ob genügend Speicher.
+//          if ValidView(MyDialog) <> nil then begin // Check if enough memory.
 //            Desktop^.ExecView(MyDialog);           // Dialog About ausführen.
-//            Dispose(MyDialog, Done);               // Dialog und Speicher frei geben.
+//            Dispose(MyDialog, Done);               // Release dialog and memory.
 //          end;
           Desktop^.Insert(MyDialog);
         end;
@@ -97,7 +97,7 @@ begin
 
 //lineal
 (*
-<b>Unit mit dem neuen Dialog.</b>
+<b>Unit with the new dialog.</b>
 <br>
 Dort wird gezeigt, wie man Werte bei Komponenten zu Laufzeit lesen und schreiben kann.
 Als Beispiel, wird die Zahl im Button bei jedem drücken um 1 erhöht.

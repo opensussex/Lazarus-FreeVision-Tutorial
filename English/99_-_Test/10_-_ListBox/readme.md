@@ -7,7 +7,7 @@ In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.
 
 ---
-**Unit mit dem neuen Dialog.**
+**Unit with the new dialog.**
 <br>
 Der Dialog mit dem Zähler-Button.
 
@@ -105,8 +105,8 @@ begin
       case Event.Command of
         cmTag: begin
           str(ListBox^.Focused + 1, s);
-          MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          ClearEvent(Event);   // Event beenden.
+          MessageBox('Weekday: ' + s + ' selected', nil, mfOKButton);
+          ClearEvent(Event);   // End event.
         end;
       end;
     end;

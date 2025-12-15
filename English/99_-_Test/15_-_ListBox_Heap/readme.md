@@ -23,7 +23,7 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
 
 
 ---
-**Unit mit dem neuen Dialog.**
+**Unit with the new dialog.**
 <br>
 Der Dialog mit dem Zähler-Button.
 
@@ -77,13 +77,13 @@ begin
     evCommand: begin
       case Event.Command of
         cmOK: begin
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
         end;
         cmTag: begin
           // Eintrag mit Fokus auslesen
           // Und ausgeben
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          // Event beenden.
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
+          // End event.
           ClearEvent(Event);
         end;
       end;

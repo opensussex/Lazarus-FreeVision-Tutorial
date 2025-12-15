@@ -3,15 +3,15 @@
 
 ![image.png](image.png)
 
-Eine sortierte String-Liste
-für eine sortierte Liste muss man **PStringCollection** oder **PStrCollection** verwenden.
+A sorted string list.
+For a sorted list you must use **PStringCollection** or **PStrCollection**.
 
 ---
 
 ---
 **Unit with the new dialog.**
 <br>
-Der Dialog mit der **StringCollection**
+The dialog with the **StringCollection**
 Declaration of the dialog, nothing special.
 
 ```pascal
@@ -23,9 +23,9 @@ type
 
 ```
 
-Es wird eine **StringCollection** gebaut und
+A **StringCollection** is built and
 as a demonstration, its content is written to a StaticText.
-Man sieht gut, das die Wochentage alphapetisch sortiert sind.
+You can see well that the weekdays are sorted alphabetically.
 
 ```pascal
 constructor TMyDialog.Init;
@@ -54,12 +54,12 @@ begin
     s := s + PString(StringCollection^.At(i))^ + #13;
   end;
 
-  Dispose(StringCollection, Done); // Die Liste freigeben
+  Dispose(StringCollection, Done); // Release the list
 
   R.Assign(5, 2, 36, 12);
   Insert(new(PStaticText, Init(R, s)));
 
-  // Ok-Button
+  // Ok button
   R.Assign(5, 11, 18, 13);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;

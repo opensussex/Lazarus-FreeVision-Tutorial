@@ -1,7 +1,7 @@
 //image image.png
 (*
 Hier wird gezeigt, wie man <b>Idle</b> verwenden kann.
-Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.
+Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogsn zu aktualiesieren.
 Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.
 *)
 //lineal
@@ -30,7 +30,7 @@ const
 (*
 Hier befindet sich die wichtigste Methode <b>Idle</b>.
 Diese Methode wird aufgerufen, wen die CPU sonst nichts zu tun hat.
-Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.
+Hier wird sie verwendet um die Uhr-Zeit in den Dialogsn zu aktualiesieren.
 *)
 //code+
 type
@@ -187,7 +187,7 @@ Aus diesem Grund wurde die Methode <b>Draw</b> ergänzt.
 //includepascal uhrdialog.pas head
 
 (*
-Die Deklaration des Dialoges.
+Die Deklaration des Dialogss.
 Hier wird in <b>ZeitStr</b> die Zeit gespeichert, so das sie mit <b>Draw</b> ausgegeben werden kann.
 *)
 //includepascal uhrdialog.pas type

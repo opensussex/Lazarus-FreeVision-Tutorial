@@ -7,12 +7,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs;  // Dialoge
+  MsgBox,   // Message boxes
+  Dialogs;  // Dialogs
 
 const
   cmOption = 1003;      // Parameter

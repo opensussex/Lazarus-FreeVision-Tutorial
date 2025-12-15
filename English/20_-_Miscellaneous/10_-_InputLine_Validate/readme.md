@@ -5,13 +5,13 @@
 
 Hier wird eine Bereichsbegrenzung für **PInputLine** gezeigt.
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.
-Bei der zweiten Zeile muss es ein Wochentag ( Montag - Freitag ) sein.
+Bei der zweiten Zeile muss es ein Weekday ( Monday - Friday ) sein.
 Für den zweiten Fall wäre eine ListBox idealer, mir geht zum zeigen wie es mit der **PInputLine** geht.
 
 ---
 
 ---
-**Unit mit dem neuen Dialog.**
+**Unit with the new dialog.**
 <br>
 Ein Dialog mit **PInputLine** welche eine Prüfung bekommen.
 Wen man **Ok** drückt, wird ein Validate-Prüfungen ausgeführt.
@@ -22,7 +22,7 @@ unit MyDialog;
 
 ```
 
-Die Deklaration des Dialoges, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.
+Die Deklaration des Dialogss, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.
 So nebenbei werden noch die beiden Validate überschrieben.
 Dies wird nur gemacht, das eine deutsche Fehlermeldung bei falscher Eingabe kommt.
 
@@ -69,8 +69,8 @@ Hier sieht man, das eine Validate-Prüfung zu den **PInputLines** dazu kommt.
 ```pascal
 constructor TMyDialog.Init;
 const
-  // Wochentage, als String, welche in der PInputLine erlaubt sind.
-  WochenTag:array[0..6] of String = ('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
+  // Weekdaye, als String, welche in der PInputLine erlaubt sind.
+  WochenTag:array[0..6] of String = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 var
   R: TRect;
   i: Integer;
@@ -91,10 +91,10 @@ begin
   R.Assign(2, 2, 22, 3);
   Insert(New(PLabel, Init(R, '~B~ereich: 0-99', InputLine)));
 
-  // --- Wochentage
+  // --- Weekdaye
   // Stringliste erzeugen.
   StringCollektion := new(PStringCollection, Init(10, 2));
-  // Stringliste mit den Wochentagen laden.
+  // Stringliste mit den Weekdayen laden.
   for i := 0 to 6 do begin
     StringCollektion^.Insert(NewStr(WochenTag[i]));
   end;

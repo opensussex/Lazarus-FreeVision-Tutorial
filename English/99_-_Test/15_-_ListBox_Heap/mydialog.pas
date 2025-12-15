@@ -40,7 +40,7 @@ const
 //done+
 destructor TNewListBox.Done;
 begin
-  Dispose(List, Done); // Die Liste freigeben
+  Dispose(List, Done); // Release the list
   inherited Done;
 end;
 //done-
@@ -112,13 +112,13 @@ begin
     evCommand: begin
       case Event.Command of
         cmOK: begin
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
         end;
         cmTag: begin
           // Eintrag mit Fokus auslesen
           // Und ausgeben
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          // Event beenden.
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
+          // End event.
           ClearEvent(Event);
         end;
       end;

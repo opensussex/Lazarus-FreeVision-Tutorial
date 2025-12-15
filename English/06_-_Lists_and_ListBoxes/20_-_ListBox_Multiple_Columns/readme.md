@@ -17,7 +17,7 @@ unit MyDialog;
 
 ```
 
-Declare the, which releases the.*of the list.
+Declare the Destructor, which releases the memory of the list.
 
 ```pascal
 type
@@ -61,7 +61,7 @@ begin
     StringCollection^.Insert(NewStr(Days[i]));
   end;
 
-  // ScrollBar für ListBox
+  // ScrollBar for ListBox
   R.Assign(42, 2, 43, 7);
   ScrollBar := new(PScrollBar, Init(R));
   Insert(ScrollBar);
@@ -73,34 +73,34 @@ begin
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 
-  // Tag-Button
+  // Tag button
   R.Assign(5, 9, 18, 11);
   Insert(new(PButton, Init(R, '~M~onat', cmMonat, bfNormal)));
 
-  // Cancel-Button
+  // Cancel button
   R.Move(15, 0);
   Insert(new(PButton, Init(R, '~C~ancel', cmCancel, bfNormal)));
 
-  // Ok-Button
+  // Ok button
   R.Move(15, 0);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
 
 ```
 
-Manuell den Speicher der Liste frei geben.
+Manually release the memory of the list.
 
 ```pascal
 destructor TMyDialog.Done;
 begin
-  Dispose(ListBox^.List, Done); // Die Liste freigeben
+  Dispose(ListBox^.List, Done); // Release the list
   inherited Done;
 end;
 
 ```
 
-Der EventHandle
-Wen man auf **[Monat]** klickt, wird der fokusierte Eintrag der ListBox angezeigt.
+The event handle
+When you click on, the focused entry of the ListBox is displayed.
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
@@ -109,13 +109,13 @@ begin
     evCommand: begin
       case Event.Command of
         cmOK: begin
-          // mache etwas
+          // do something
         end;
         cmMonat: begin
-          // Eintrag mit Fokus auslesen
-          // Und ausgeben
-          MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          // Event beenden.
+          // Read entry with focus
+          // And output
+          MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
+          // End event.
           ClearEvent(Event);
         end;
       end;

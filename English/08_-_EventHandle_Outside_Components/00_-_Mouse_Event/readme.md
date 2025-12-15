@@ -3,11 +3,11 @@
 
 ![image.png](image.png)
 
-Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.
-Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.
+You can catch an event handle in the dialog/window, when you move/click the mouse.
+There is nothing special in the main program for this, this all runs locally in the dialog/window.
 
 ---
-Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.
+In the main program, only the dialog is built, called and closed.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -20,9 +20,9 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.
       case Event.Command of
         cmMouseAktion: begin
           MouseDialog := New(PMyMouse, Init);
-          if ValidView(MouseDialog) <> nil then begin // Prüfen ob genügend Speicher.
-            Desktop^.ExecView(MouseDialog);           // Dialog Mausaktion ausführen.
-            Dispose(MouseDialog, Done);               // Dialog und Speicher frei geben.
+          if ValidView(MouseDialog) <> nil then begin // Check if enough memory.
+            Desktop^.ExecView(MouseDialog);           // Execute mouse action dialog.
+            Dispose(MouseDialog, Done);               // Release dialog and memory.
           end;
         end;
         else begin
@@ -36,7 +36,7 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.
 
 
 ---
-**Unit mit dem Mausaktions-Dialog.**
+**Unit with the mouse action dialog.**
 <br>
 
 ```pascal
@@ -44,7 +44,7 @@ unit MyDialog;
 
 ```
 
-In dem Object sind die **PEditLine** globel deklariert, da diese später bei Mausaktionen modifiziert werden.
+In the object the.*are declared globally, because these are modified later during mouse actions.
 
 ```pascal
 type
@@ -59,8 +59,8 @@ type
 
 ```
 
-Es wird ein Dialog mit EditLine, Label und Button gebaut.
-Einzig besonderes dort, die **Editlline** wird der Status auf **ReadOnly** gesetzt eigene Eingaben sind dort unerwünscht.
+A dialog with EditLine, Label and Button is built.
+The only special thing there, the.*status is set to own inputs are undesirable there.
 
 ```pascal
 constructor TMyMouse.Init;
@@ -69,7 +69,7 @@ var
 begin
   R.Assign(0, 0, 42, 13);
   R.Move(23, 3);
-  inherited Init(R, 'Mausaktion');
+  inherited Init(R, 'Mouse Action');
 
   // PosX
   R.Assign(25, 2, 30, 3);
@@ -77,7 +77,7 @@ begin
   Insert(EditX);
   EditX^.State := sfDisabled or EditX^.State;    // ReadOnly
   R.Assign(5, 2, 20, 3);
-  Insert(New(PLabel, Init(R, 'MausPosition ~X~:', EditX)));
+  Insert(New(PLabel, Init(R, 'Mouse Position ~X~:', EditX)));
 
   // PosY
   R.Assign(25, 4, 30, 5);
@@ -85,13 +85,13 @@ begin
   EditY^.State := sfDisabled or EditY^.State;    // ReadOnly
   Insert(EditY);
   R.Assign(5, 4, 20, 5);
-  Insert(New(PLabel, Init(R, 'MausPosition ~Y~:', EditY)));
+  Insert(New(PLabel, Init(R, 'Mouse Position ~Y~:', EditY)));
 
   // Maus-Tasten
   R.Assign(25, 7, 32, 8);
   EditMB := new(PInputLine, Init(R, 7));
   EditMB^.State := sfDisabled or EditMB^.State;  // ReadOnly
-  EditMB^.Data^:= 'oben';                        // Anfangs ist die Taste oben.
+  EditMB^.Data^:= 'up';                        // Initially the key is up.
   Insert(EditMB);
   R.Assign(5, 7, 20, 8);
   Insert(New(PLabel, Init(R, '~M~austaste:', EditMB)));
@@ -103,8 +103,8 @@ end;
 
 ```
 
-Im EventHandle sieht man gut, das dort die Mausaktionen abgefangen werden.
-Die Maus-Daten werden an die **EditLines** ausgegeben.
+In the event handle you can see well, that the mouse actions are caught there.
+The mouse data is output to the.
 
 ```pascal
 procedure TMyMouse.HandleEvent(var Event: TEvent);
@@ -114,16 +114,16 @@ begin
   inherited HandleEvent(Event);
 
   case Event.What of
-    evMouseDown: begin                 // Taste wurde gedrückt.
-      EditMB^.Data^:= 'unten';
+    evMouseDown: begin                 // Key was pressed.
+      EditMB^.Data^:= 'down';
       EditMB^.Draw;
     end;
-    evMouseUp: begin                   // Taste wurde losgelassen.
-      EditMB^.Data^:= 'oben';
+    evMouseUp: begin                   // Key was released.
+      EditMB^.Data^:= 'up';
       EditMB^.Draw;
     end;
-    evMouseMove: begin                 // Maus wurde bewegt.
-      MakeLocal (Event.Where, Mouse);  // Mausposition ermitteln.
+    evMouseMove: begin                 // Mouse was moved.
+      MakeLocal (Event.Where, Mouse);  // Determine mouse position.
       EditX^.Data^:= IntToStr(Mouse.X);
       EditX^.Draw;
       EditY^.Data^:= IntToStr(Mouse.Y);

@@ -17,12 +17,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
   MyDialog;
 
 const
@@ -33,7 +33,7 @@ type
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -75,9 +75,9 @@ type
       case Event.Command of                   // About Dialog
         cmOption: begin
           AboutDialog := New(PMyDialog, Init);
-          if ValidView(AboutDialog) <> nil then begin // Prüfen ob genügend Speicher.
+          if ValidView(AboutDialog) <> nil then begin // Check if enough memory.
             Desktop^.ExecView(AboutDialog);           // Dialog About ausführen.
-            Dispose(AboutDialog, Done);               // Dialog und Speicher frei geben.
+            Dispose(AboutDialog, Done);               // Release dialog and memory.
           end;
         end;
         else begin

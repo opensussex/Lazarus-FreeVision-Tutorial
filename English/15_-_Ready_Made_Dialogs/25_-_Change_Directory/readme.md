@@ -1,5 +1,5 @@
 # 15 - Ready Made Dialogs
-## 25 - Change Directory
+## 25 - Ordner wechseln
 
 ![image.png](image.png)
 

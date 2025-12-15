@@ -1,31 +1,31 @@
 //image image.png
 (*
 If the string list should remain unsorted, use <b>PUnSortedStrCollection</b>.
-Only.*is not enough</b>, because this crashes at.
+Only PCollection is not enough</b>, because this crashes at Dispose.
 *)
 //lineal
 program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
-  StdDlg,   // Für Datei öffnen
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
+  StdDlg,   // For file open
   MyDialog;
 
 const
-  cmDialog   = 1001;     // Dialog anzeigen
+  cmDialog   = 1001;     // Show dialog
 
 type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
     procedure NewWindows(Titel: ShortString);
   end;
 
@@ -75,7 +75,7 @@ type
           MyDialog := New(PMyDialog, Init);
           if ValidView(MyDialog) <> nil then begin
             Desktop^.ExecView(MyDialog);   // Dialog ausführen.
-            Dispose(MyDialog, Done);       // Dialog und Speicher frei geben.
+            Dispose(MyDialog, Done);       // Release dialog and memory.
           end;
         end
         else begin

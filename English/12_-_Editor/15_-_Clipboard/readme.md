@@ -1,14 +1,14 @@
 # 12 - Editor
-## 15 - Clipboard
+## 15 - Zwischenablage
 
 ![image.png](image.png)
 
-Hier wurde ein Clipboard hinzugefügt, somit ist auch kopieren und einfügen im Editor möglich.
+Hier wurde ein Zwischenablage hinzugefügt, somit ist auch kopieren und einfügen im Editor möglich.
 Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bekommt, wen man kopieren wählt.
 Somit kann man dieses sogar sichbar machen.
 
 ---
-Ein Kommando für das öffnen des Clipboardfenster.
+Ein Kommando für das öffnen des Zwischenablagefenster.
 
 ```pascal
 const
@@ -17,7 +17,7 @@ const
   cmShowClip = 1003;
 ```
 
-Hier wird das Fenster für die Clipboard deklariert.
+Hier wird das Fenster für die Zwischenablage deklariert.
 Auch kann man bei **NewWindows** sagen, ob das Fenster nicht sichtbar ezeigt werden soll.
 
 ```pascal
@@ -111,7 +111,7 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.
   end;
 ```
 
-Hier sieht man, wie man das verborgene Clipboardfenster sichbar macht.
+Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

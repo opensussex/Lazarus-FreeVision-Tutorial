@@ -7,12 +7,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
   StdDlg,
   Gadgets,
   MyDialog;
@@ -27,7 +27,7 @@ type
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
 
     procedure NewWindows(Titel: ShortString);
 
@@ -87,16 +87,16 @@ type
       case Event.Command of                        // About Dialog
         cmDialog: begin
           MyDialog := New(PMyDialog, Init);
-          if ValidView(MyDialog) <> nil then begin // Prüfen ob genügend Speicher.
+          if ValidView(MyDialog) <> nil then begin // Check if enough memory.
             Desktop^.ExecView(MyDialog);           // Dialog About ausführen.
-            Dispose(MyDialog, Done);               // Dialog und Speicher frei geben.
+            Dispose(MyDialog, Done);               // Release dialog and memory.
           end;
         end;
         cmFileTest:begin
           FileName := '*.*';
           New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~F~ilename', fdOpenButton, 1));
           if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
-            NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+            NewWindows(FileName); // Neues Fenster mit der ausselecteden Datei.
           end;
         end
         else begin
@@ -157,7 +157,7 @@ begin
 
 //lineal
 (*
-<b>Unit mit dem neuen Dialog.</b>
+<b>Unit with the new dialog.</b>
 <br>
 Der Dialog mit dem Zähler-Button.
 *)

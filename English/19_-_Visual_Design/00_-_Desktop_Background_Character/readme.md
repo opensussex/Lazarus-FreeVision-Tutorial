@@ -1,5 +1,5 @@
 # 19 - Visual Design
-## 00 --Desktop Background Character
+## 00 --Desktop-Hintergrund Zeichen
 
 ![image.png](image.png)
 

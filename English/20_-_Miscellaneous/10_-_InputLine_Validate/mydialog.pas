@@ -48,8 +48,8 @@ end;
 //init+
 constructor TMyDialog.Init;
 const
-  // Wochentage, als String, welche in der PInputLine erlaubt sind.
-  WochenTag:array[0..6] of String = ('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
+  // Weekdaye, als String, welche in der PInputLine erlaubt sind.
+  WochenTag:array[0..6] of String = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 var
   R: TRect;
   i: Integer;
@@ -70,10 +70,10 @@ begin
   R.Assign(2, 2, 22, 3);
   Insert(New(PLabel, Init(R, '~B~ereich: 0-99', InputLine)));
 
-  // --- Wochentage
+  // --- Weekdaye
   // Stringliste erzeugen.
   StringCollektion := new(PStringCollection, Init(10, 2));
-  // Stringliste mit den Wochentagen laden.
+  // Stringliste mit den Weekdayen laden.
   for i := 0 to 6 do begin
     StringCollektion^.Insert(NewStr(WochenTag[i]));
   end;

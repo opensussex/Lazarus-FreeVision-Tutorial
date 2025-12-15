@@ -1,12 +1,12 @@
 //image image.png
 (*
-Es ist auch möglich auf ein Resize-Ereigniss vom terminal zu reagieren.
+Es ist auch möglich auf ein Resize-Event vom terminal zu reagieren.
 Dieses Beispiel funktioniert nur mit <b>Linux</b>
 Technisch bedingt von Free-Vision ist bei <b>255</b> Zeichen pro Zeile Schluss.
 
 Achtung !
 Dies ist eine Eigenkreation, daher kann es Bugs haben.
-Es kann zu Konflikten kommen, wen das Resize-Ereigniss aufgerufen wird,
+Es kann zu Konflikten kommen, wen das Resize-Event aufgerufen wird,
 während eine andere Ausgabe läuft.
 *)
 //lineal
@@ -159,7 +159,7 @@ var
       end;
       else begin
         Result := StdEditorDialog(Dialog, Info);
-      end;                                      // Original Dialoge aufrufen.
+      end;                                      // Original Dialogs aufrufen.
     end;
   end;
 
@@ -250,7 +250,7 @@ var
     FileName := '*.*';
     New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~F~ilename', fdOpenButton, 1));
     if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
-      NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+      NewWindows(FileName); // Neues Fenster mit der ausselecteden Datei.
     end;
   end;
   procedure TMyApp.SaveAll;
@@ -304,7 +304,7 @@ var
   end;
 
 (*
-Dies muss eingefügt werden, um auf ein Resize-Ereigniss zu reagieren
+Dies muss eingefügt werden, um auf ein Resize-Event zu reagieren
 *)
 //code+
 

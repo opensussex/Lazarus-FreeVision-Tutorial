@@ -78,7 +78,7 @@ begin
   inherited HandleEvent(Event);
 
   case Event.What of
-    evMouseDown: begin    // Maus-Taste wurde gedrückt.
+    evMouseDown: begin    // Maus-Key was pressed.
       MyCol:=Random(16);
       Draw;
     end;

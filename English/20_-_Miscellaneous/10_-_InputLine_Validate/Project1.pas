@@ -2,7 +2,7 @@
 (*
 Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.
-Bei der zweiten Zeile muss es ein Wochentag ( Montag - Freitag ) sein.
+Bei der zweiten Zeile muss es ein Weekday ( Monday - Friday ) sein.
 Für den zweiten Fall wäre eine ListBox idealer, mir geht zum zeigen wie es mit der <b>PInputLine</b> geht.
 *)
 //lineal
@@ -10,12 +10,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
   MyDialog;
 
 const
@@ -26,7 +26,7 @@ type
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -95,7 +95,7 @@ begin
 
 //lineal
 (*
-<b>Unit mit dem neuen Dialog.</b>
+<b>Unit with the new dialog.</b>
 <br>
 Ein Dialog mit <b>PInputLine</b> welche eine Prüfung bekommen.
 Wen man <b>Ok</b> drückt, wird ein Validate-Prüfungen ausgeführt.
@@ -104,7 +104,7 @@ Bei <b>Abbruch</b> gibt es keine Prüfung.
 //includepascal mydialog.pas head
 
 (*
-Die Deklaration des Dialoges, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.
+Die Deklaration des Dialogss, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.
 So nebenbei werden noch die beiden Validate überschrieben.
 Dies wird nur gemacht, das eine deutsche Fehlermeldung bei falscher Eingabe kommt.
 *)

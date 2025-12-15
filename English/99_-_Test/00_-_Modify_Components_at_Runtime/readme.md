@@ -1,15 +1,15 @@
 # 99 - Test
-## 00 - Modify Components at Runtime
+## 00 - Komponenten zur Laufzeit modifizieren
 
 ![image.png](image.png)
 
-In den vererbten Dialogen ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.
+In den vererbten Dialogsn ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
 
 ---
 
 ---
-**Unit mit dem neuen Dialog.**
+**Unit with the new dialog.**
 <br>
 Dort wird gezeigt, wie man Werte bei Komponenten zu Laufzeit lesen und schreiben kann.
 Als Beispiel, wird die Zahl im Button bei jedem drücken um 1 erhöht.
@@ -85,7 +85,7 @@ begin
           CounterButton^.Title^ := IntToStr(Counter); // Neuer Titel an Button übergeben.
 
           CounterButton^.Draw;                        // Button neu zeichnen.
-          ClearEvent(Event);                          // Event beenden.
+          ClearEvent(Event);                          // End event.
         end;
         cmOK:Close;
       end;

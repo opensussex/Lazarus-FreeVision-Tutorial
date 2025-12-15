@@ -9,12 +9,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs;  // Dialoge
+  MsgBox,   // Message boxes
+  Dialogs;  // Dialogs
 
 const
   cmOption = 1003;      // Parameter
@@ -121,9 +121,9 @@ Einziger Unterschied anstelle von <b>PBackGround</b> wird <b>PMyBackground</b> g
     R.Assign(0, 0, 35, 15);
     R.Move(23, 3);
     Dia := New(PDialog, Init(R, 'Parameter'));
-    if ValidView(Dia) <> nil then begin // Prüfen ob genügend Speicher.
+    if ValidView(Dia) <> nil then begin // Check if enough memory.
       Desktop^.ExecView(Dia);           // Dialog ausführen.
-      Dispose(Dia, Done);               // Dialog und Speicher frei geben.
+      Dispose(Dia, Done);               // Release dialog and memory.
     end;
   end;
 

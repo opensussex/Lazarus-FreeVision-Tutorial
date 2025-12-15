@@ -8,12 +8,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   MsgBox,   // MessageBox
   Menus,    // Status line
-  Dialogs;  // Dialoge
+  Dialogs;  // Dialogs
 
 const
   cmInputLine = 1001;     // Show about

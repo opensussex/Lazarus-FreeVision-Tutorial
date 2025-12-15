@@ -1,5 +1,5 @@
 # 15 - Ready Made Dialogs
-## 20 - File Dialogs
+## 20 - Datei Dialogs
 
 ![image.png](image.png)
 
@@ -7,7 +7,7 @@ Ein Dialog zum öffnen und speichern von Dateien.
 Der **PFileDialog**.
 
 ---
-Verschiedene Datei-Dialoge
+Verschiedene Datei-Dialogs
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

@@ -8,12 +8,12 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   MsgBox,   // MessageBox
   Menus,    // Status line
-  StdDlg;   // Standard-Dialoge
+  StdDlg;   // Standard-Dialogs
 
 const
   cmFileOpen = 1001;
@@ -63,7 +63,7 @@ type
   end;
 
 (*
-Verschiedene Datei-Dialoge
+Verschiedene Datei-Dialogs
 *)
   //code+
   procedure TMyApp.HandleEvent(var Event: TEvent);

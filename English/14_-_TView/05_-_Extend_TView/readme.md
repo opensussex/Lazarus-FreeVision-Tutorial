@@ -1,5 +1,5 @@
 # 14 - TView
-## 05 - Extend TView
+## 05 - TView erweitern
 
 ![image.png](image.png)
 
@@ -78,9 +78,9 @@ end;
 
 
 ---
-**Unit mit dem neuen Dialog.**
+**Unit with the new dialog.**
 <br>
-Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.
+Mit den 3 oberen Button, kann man das Farb-Schema des Dialogss ändern.
 
 ```pascal
 unit MyView;
@@ -106,7 +106,7 @@ type
 
 ```
 
-Das Bauen des Dialoges ist nichts besonderes.
+Das Bauen des Dialogss ist nichts besonderes.
 
 ```pascal
 procedure TMyView.Draw;
@@ -147,7 +147,7 @@ begin
   inherited HandleEvent(Event);
 
   case Event.What of
-    evMouseDown: begin    // Maus-Taste wurde gedrückt.
+    evMouseDown: begin    // Maus-Key was pressed.
       MyCol:=Random(16);
       Draw;
     end;

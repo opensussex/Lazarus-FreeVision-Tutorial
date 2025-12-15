@@ -9,11 +9,11 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  Dialogs,  // Dialoge
+  Dialogs,  // Dialogs
   MyButton; // der neue Button
 
 const
@@ -89,7 +89,7 @@ Man sieht auch, das man anstelle von Rect, nur X und Y angibt.
     R.Move(23, 3);                             // Position des Dialogs.
     Dia := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
     with Dia^ do begin
-      // oben
+      // up
       Insert(new(PMyButton, Init(7, 8, 'sehr langer ~T~ext', cmValid, bfDefault)));
 
       // mitte
@@ -102,7 +102,7 @@ Man sieht auch, das man anstelle von Rect, nur X und Y angibt.
       Insert(new(PMyButton, Init(19, 12, '~C~ancel', cmCancel, bfNormal)));
     end;
     Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
-    Dispose(Dia, Done);       // Dialog und Speicher frei geben.
+    Dispose(Dia, Done);       // Release dialog and memory.
   end;
   //code-
 

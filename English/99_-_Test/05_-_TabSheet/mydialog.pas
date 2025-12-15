@@ -55,7 +55,7 @@ begin
 
   Insert(Tab);
 
-  // MessageBox-Button, mit lokalem Ereigniss.
+  // MessageBox-Button, mit lokalem Event.
   R.Assign(19, 13, 32, 15);
   Insert(new(PButton, Init(R, '~M~sg-Box', cmMsg, bfNormal)));
 
@@ -73,10 +73,10 @@ begin
   case Event.What of
     evCommand: begin
       case Event.Command of
-        // Lokales Ereigniss ausführen.
+        // Lokales Event ausführen.
         cmMsg: begin
           MessageBox('Ich bin eine MessageBox !', nil, mfOKButton);
-          ClearEvent(Event);  // Event beenden.
+          ClearEvent(Event);  // End event.
         end;
       end;
     end;

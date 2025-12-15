@@ -75,7 +75,7 @@ begin
   inherited HandleEvent(Event);
 
   case Event.What of
-    evKeyDown: begin                 // Taste wurde gedrückt.
+    evKeyDown: begin                 // Key was pressed.
       EditZeichen^.Data^:= Event.CharCode;
       EditZeichen^.Draw;
       EditZeichenCode^.Data^:= IntToStr(Byte(Event.CharCode));

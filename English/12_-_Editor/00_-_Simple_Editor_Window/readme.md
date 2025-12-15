@@ -1,5 +1,5 @@
 # 12 - Editor
-## 00 - Simple Editor Window
+## 00 - Einfaches Editor-Fenster
 
 ![image.png](image.png)
 

@@ -1,12 +1,12 @@
 # 20 - Miscellaneous
-## 15 - Tree View
+## 15 - Baum Ansicht
 
 ![image.png](image.png)
 
 Baumartige Darstellung.
 
 ---
-Für die Baumartige Darstellung verwendet man die Komponente **POutline**.
+Für die Baumartige Darstellung use die Komponente **POutline**.
 
 ```pascal
   PTreeWindow = ^TTreeWindow;

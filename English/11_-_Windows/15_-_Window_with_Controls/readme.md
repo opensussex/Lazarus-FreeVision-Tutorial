@@ -1,9 +1,9 @@
 # 11 - Windows
-## 15 - Windows mit Bedienelemte ausstatten
+## 15 - Window with Controls
 
 ![image.png](image.png)
 
-Dem Windows wurden noch Scrollbalken spendiert.
+Dem Fenster wurden noch Scrollbalken spendiert.
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.
 Und das wichtigste für einen Editor, ein Memo in dem man schreiben kann.
 
@@ -19,11 +19,11 @@ Hier wird das neue vererbte Windows erzeugt.
     Win: PMyWindow;
     R: TRect;
   const
-    WinCounter: integer = 0;      // Zählt Windows
+    WinCounter: integer = 0;      // Zählt Fenster
   begin
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PMyWindow, Init(R, 'Windows', WinCounter));
+    Win := New(PMyWindow, Init(R, 'Fenster', WinCounter));
 
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
@@ -35,7 +35,7 @@ Hier wird das neue vererbte Windows erzeugt.
 
 
 ---
-**Unit mit dem neuen Windows.**
+**Unit mit dem neuen Fenster.**
 <br>
 
 ```pascal

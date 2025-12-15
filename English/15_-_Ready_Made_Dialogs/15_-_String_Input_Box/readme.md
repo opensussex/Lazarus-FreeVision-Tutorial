@@ -1,5 +1,5 @@
 # 15 - Ready Made Dialogs
-## 15 - String Input Box
+## 15 - String-Eingabe Box
 
 ![image.png](image.png)
 

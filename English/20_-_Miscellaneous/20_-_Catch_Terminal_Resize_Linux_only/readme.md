@@ -1,15 +1,15 @@
 # 20 - Miscellaneous
-## 20 - Catch Terminal Resize (Linux only)
+## 20 - Terminal Resize abfangen (nur Linux)
 
 ![image.png](image.png)
 
-Es ist auch möglich auf ein Resize-Ereigniss vom terminal zu reagieren.
+Es ist auch möglich auf ein Resize-Event vom terminal zu reagieren.
 Dieses Beispiel funktioniert nur mit **Linux**
 Technisch bedingt von Free-Vision ist bei **255** Zeichen pro Zeile Schluss.
 
 Achtung !
 Dies ist eine Eigenkreation, daher kann es Bugs haben.
-Es kann zu Konflikten kommen, wen das Resize-Ereigniss aufgerufen wird,
+Es kann zu Konflikten kommen, wen das Resize-Event aufgerufen wird,
 während eine andere Ausgabe läuft.
 
 ---
@@ -19,7 +19,7 @@ uses
   BaseUnix, // Für Resize Signal und Auflösung
 ```
 
-Dies muss eingefügt werden, um auf ein Resize-Ereigniss zu reagieren
+Dies muss eingefügt werden, um auf ein Resize-Event zu reagieren
 
 ```pascal
 

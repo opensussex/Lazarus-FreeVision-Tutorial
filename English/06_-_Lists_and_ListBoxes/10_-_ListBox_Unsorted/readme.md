@@ -4,9 +4,9 @@
 ![image.png](image.png)
 
 With TListBox you must absolutely release the memory of TList with a destructor.
-This is not typical for Free-Vision. This also makes sense, because lists are often used globally, 
+This is not typical for Free-Vision. This also makes sense, because lists are often used globally,
 otherwise you would always have to create a copy of it.
-There the.*is missing **destructor**, which cleans up the memory.
+There the **destructor** is missing, which cleans up the memory.
 
 ---
 
@@ -20,7 +20,7 @@ unit MyDialog;
 
 ```
 
-Declare the, which releases the.*of the list.
+Declare the **Destructor**, which releases the **memory** of the list.
 
 ```pascal
 type
@@ -61,7 +61,7 @@ begin
     StringCollection^.Insert(NewStr(Days[i]));
   end;
 
-  // ScrollBar für ListBox
+  // ScrollBar for ListBox
   R.Assign(31, 2, 32, 7);
   ScrollBar := new(PScrollBar, Init(R));
   Insert(ScrollBar);
@@ -73,34 +73,34 @@ begin
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 
-  // Tag-Button
+  // Tag button
   R.Assign(5, 9, 18, 11);
   Insert(new(PButton, Init(R, '~T~ag', cmTag, bfNormal)));
 
-  // Cancel-Button
+  // Cancel button
   R.Move(15, 0);
   Insert(new(PButton, Init(R, '~C~ancel', cmCancel, bfNormal)));
 
-  // Ok-Button
+  // Ok button
   R.Move(15, 0);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
 
 ```
 
-Manuell den Speicher der Liste frei geben.
+Manually release the memory of the list.
 
 ```pascal
 destructor TMyDialog.Done;
 begin
-  Dispose(ListBox^.List, Done); // Die Liste freigeben
+  Dispose(ListBox^.List, Done); // Release the list
   inherited Done;
 end;
 
 ```
 
-Der EventHandle
-Wen man auf **[Tag]** klickt, wird der fokusierte Eintrag der ListBox angezeigt.
+The event handle
+When you click on **[Tag]**, the focused entry of the ListBox is displayed.
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
@@ -109,13 +109,13 @@ begin
     evCommand: begin
       case Event.Command of
         cmOK: begin
-          // mache etwas
+          // do something
         end;
         cmTag: begin
-          // Eintrag mit Fokus auslesen
-          // Und ausgeben
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          // Event beenden.
+          // Read entry with focus
+          // And output
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
+          // End event.
           ClearEvent(Event);
         end;
       end;

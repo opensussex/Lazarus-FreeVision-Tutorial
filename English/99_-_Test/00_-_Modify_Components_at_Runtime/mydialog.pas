@@ -64,7 +64,7 @@ begin
           CounterButton^.Title^ := IntToStr(Counter); // Neuer Titel an Button übergeben.
 
           CounterButton^.Draw;                        // Button neu zeichnen.
-          ClearEvent(Event);                          // Event beenden.
+          ClearEvent(Event);                          // End event.
         end;
         cmOK:Close;
       end;

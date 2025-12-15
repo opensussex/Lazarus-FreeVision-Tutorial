@@ -1,9 +1,9 @@
 # 15 - Ready Made Dialogs
-## 05 - Simple MessageBox mit Auswertung
+## 05 - Einfache MessageBox mit Auswertung
 
 ![image.png](image.png)
 
-Die einfachsten Dialoge sind die fertigen MessageBoxen.
+Die einfachsten Dialogs sind die fertigen MessageBoxen.
 
 ---
 Konstanten für die verschiedenen Menueinträge.

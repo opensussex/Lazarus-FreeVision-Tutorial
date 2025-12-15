@@ -1,10 +1,10 @@
 //image image.png
 (*
 Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.
-Leider sind die Standard-Dialoge dafür in Englisch.
+Leider sind die Standard-Dialogs dafür in Englisch.
 Aus diesem Grund, wird es hier neu in deutsch gebaut.
 Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialog der Fall ist.
-Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menu anpassen, der Rest geschieht automatisch.
+Gibt man sich mit den englischen Dialogsn zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menu anpassen, der Rest geschieht automatisch.
 *)
 //lineal
 program Project1;
@@ -147,7 +147,7 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
   //code-
 
 (*
-Hier wird die neuen Dialoge eingefügt.
+Hier wird die neuen Dialogs eingefügt.
 *)
   //code+
   function MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
@@ -165,7 +165,7 @@ Hier wird die neuen Dialoge eingefügt.
       end;
       else begin
         Result := StdEditorDialog(Dialog, Info);
-      end;                                      // Original Dialoge aufrufen.
+      end;                                      // Original Dialogs aufrufen.
     end;
   end;
   //code-
@@ -263,7 +263,7 @@ Dies ist das einzige was man machen muss.
     FileName := '*.*';
     New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~F~ilename', fdOpenButton, 1));
     if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
-      NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+      NewWindows(FileName); // Neues Fenster mit der ausselecteden Datei.
     end;
   end;
   procedure TMyApp.SaveAll;

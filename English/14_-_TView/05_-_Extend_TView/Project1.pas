@@ -167,9 +167,9 @@ begin
 
 //lineal
 (*
-<b>Unit mit dem neuen Dialog.</b>
+<b>Unit with the new dialog.</b>
 <br>
-Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.
+Mit den 3 oberen Button, kann man das Farb-Schema des Dialogss ändern.
 *)
 //includepascal myview.pas head
 
@@ -179,7 +179,7 @@ Hier sind 3 Event-Konstante hinzugekommen.
 //includepascal myview.pas type
 
 (*
-Das Bauen des Dialoges ist nichts besonderes.
+Das Bauen des Dialogss ist nichts besonderes.
 *)
 //includepascal myview.pas init
 

@@ -1,5 +1,5 @@
 # 14 - TView
-## 00 - Simplest TView
+## 00 - Einfachstes TView
 
 ![image.png](image.png)
 

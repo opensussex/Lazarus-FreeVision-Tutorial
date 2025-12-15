@@ -7,11 +7,11 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  Dialogs,  // Dialoge
+  Dialogs,  // Dialogs
   Outline;  // Baumansicht
 
 const
@@ -25,7 +25,7 @@ type
   end;
 
 (*
-Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.
+Für die Baumartige Darstellung use die Komponente <b>POutline</b>.
 *)
 
 //code+

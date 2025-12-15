@@ -10,18 +10,18 @@ program Project1;
 
 uses
   App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
+  Objects,  // Window area (TRect)
   Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
+  Views,    // Event (cmQuit)
   Menus,    // Status line
-  MsgBox,   // Messageboxen
-  Dialogs,  // Dialoge
-  StdDlg,   // Für Datei öffnen
+  MsgBox,   // Message boxes
+  Dialogs,  // Dialogs
+  StdDlg,   // For file open
   Gadgets,
   MyDialog;
 
 const
-  cmDialog   = 1001;     // Dialog anzeigen
+  cmDialog   = 1001;     // Show dialog
   cmFileTest = 1002;
 
 type
@@ -30,7 +30,7 @@ type
     procedure InitStatusLine; virtual;                 // Status line
     procedure InitMenuBar; virtual;                    // Menu
     procedure HandleEvent(var Event: TEvent); virtual; // Event handler
-    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
+    procedure OutOfMemory; virtual;                    // Called when memory overflows.
 
     procedure NewWindows(Titel: ShortString);
 
@@ -58,7 +58,7 @@ type
     );
 
     (*
-    Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.
+    Erzeugt ein kleines Fenster rechts-down, welches den Heap anzeigt.
     *)
     //code+
     GetExtent(R);
@@ -103,7 +103,7 @@ Den Dialog mit dem Speicher Leak aufrufen.
           MyDialog := New(PMyDialog, Init);
           if ValidView(MyDialog) <> nil then begin
             Desktop^.ExecView(MyDialog);   // Dialog ausführen.
-            Dispose(MyDialog, Done);       // Dialog und Speicher frei geben.
+            Dispose(MyDialog, Done);       // Release dialog and memory.
           end;
         end;
         // Ein FileOpenDialog, bei dem alles in Ordnung ist.
@@ -111,7 +111,7 @@ Den Dialog mit dem Speicher Leak aufrufen.
           FileName := '*.*';
           New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~F~ilename', fdOpenButton, 1));
           if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
-            NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+            NewWindows(FileName); // Neues Fenster mit der ausselecteden Datei.
           end;
         end
         else begin
@@ -173,7 +173,7 @@ begin
 
 //lineal
 (*
-<b>Unit mit dem neuen Dialog.</b>
+<b>Unit with the new dialog.</b>
 <br>
 Der Dialog mit dem dem Speicher Leak
 *)

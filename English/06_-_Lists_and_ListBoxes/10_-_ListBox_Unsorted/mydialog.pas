@@ -17,7 +17,7 @@ type
     StringCollection: PUnSortedStrCollection;
 
     constructor Init;
-    destructor Done; virtual;  // Because of memory leak in TList
+    destructor Done; virtual;  // Wegen Speicher Leak in TList
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
 //type-
@@ -26,7 +26,7 @@ implementation
 
 //init+
 const
-  cmTag = 1000;  // Local event constant
+  cmTag = 1000;  // Lokale Event Konstante
 
 constructor TMyDialog.Init;
 var
@@ -76,7 +76,7 @@ end;
 //done+
 destructor TMyDialog.Done;
 begin
-  Dispose(ListBox^.List, Done); // Die Liste freigeben
+  Dispose(ListBox^.List, Done); // Release the list
   inherited Done;
 end;
 //done-
@@ -93,8 +93,8 @@ begin
         cmTag: begin
           // Eintrag mit Fokus auslesen
           // Und ausgeben
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          // Event beenden.
+          MessageBox('Weekday: ' + PString(ListBox^.GetFocusedItem)^ + ' selected', nil, mfOKButton);
+          // End event.
           ClearEvent(Event);
         end;
       end;

@@ -49,9 +49,9 @@ Der <b>Speichern unter</b>-Dialog ist schon fest verbaut, aber leider in Englisc
 Daher wird diese Funktion auf eine eigene Routine umgeleitet.
 Auch habe ich die Maske <b>*.*</b> durch <b>*.txt</b> ersetzt.
 Für die restlichen Diloage, werden die original Routinen verwendet, dies geschieht mit <b>StdEditorDialog(...</b>.
-Die Deklaration von <b>MyApp</b> ist schon hier oben, weil sie hier schon gebraucht wird.
+Die Deklaration von <b>MyApp</b> ist schon hier up, weil sie hier schon gebraucht wird.
 
-Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.
+Bei MyApp.Init werden noch die neuen Standard-Dialogs zugeordnet.
 *)
 //code+
 var
@@ -64,7 +64,7 @@ var
         Result := MyApp.ExecuteDialog(New(PFileDialog, Init('*.txt', 'Datei speichern unter', '~F~ile-Name', fdOkButton, 101)), Info);
       end;
     else
-      StdEditorDialog(Dialog, Info);  // Original Dialoge aufrufen.
+      StdEditorDialog(Dialog, Info);  // Original Dialogs aufrufen.
     end;
   end;
 
@@ -169,7 +169,7 @@ Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, die
     FileName := '*.*';
     New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~F~ilename', fdOpenButton, 1));
     if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
-      NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+      NewWindows(FileName); // Neues Fenster mit der ausselecteden Datei.
     end;
   end;
 //code-
